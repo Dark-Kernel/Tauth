@@ -1,10 +1,14 @@
 # Tauth
-Termux fingerprint authentication 
+### Termux fingerprint authentication 
 
-This works only on the devices having fingerprint sensor.
+***#This works only on the devices having fingerprint sensor.***
 
-Make sure you have installed termux-api from playstore.
+***#Make sure you have installed termux-api from playstore.***
 
-RUN : 
+#RUN :
 
-  `./setup`
+	git clone https://github.com/Mr-SimpleEditor/Tauth
+	
+	cd Tauth 
+	
+	./setup
