@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+apt install termux-api -y
+read -p "Enter the backup password : " bpass
+echo "p=$bpass" > pass.txt
+sed -i '2r pass.txt' tauth
+sed -i '2d' tauth
+rm -fr pass.txt
+

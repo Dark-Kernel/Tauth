@@ -1,0 +1,53 @@
+#!/bin/bash
+p=2323
+
+
+
+#disabling ctrl+c
+trap '' 2
+clear
+red='\033[1;31m'
+grn='\033[1;32m'
+counter=1
+#p=$(cat pass.txt) 
+#rm pass.txt 2>/dev/null
+ex=$(ps | grep bash | head -1 | awk '{print $1}')
+run(){
+termux-fingerprint > alog.txt
+isInFile=$(cat alog.txt | grep -c "AUTH_RESULT_SUCCESS")
+if [ $isInFile -eq 0 ]; then
+   echo "Fail : $counter"
+   ((counter=counter+1))
+	if [ $counter -gt 3 ]; then
+		echo -e "$red\nFingerPrint Authentication Failed!\n"
+		echo -e $grn
+		read -p "Enter Pass : " pass
+		if [ $pass -eq $p ]; then 
+			clear
+			cat /data/data/com.termux/files/usr/etc/motd
+			rm -fr alog.txt
+			trap 2
+	        else
+			echo -e "$red\nWrong Password\n"
+			echo -e '\033[0m'
+			rm -fr alog.txt
+			kill -9 $ex	   
+		fi
+
+		exit 1
+		rm -fr alog.txt 2>/dev/null
+                
+        else
+		run	
+	fi
+else
+	trap 2
+	clear
+	rm -fr alog.txt 2>/dev/null
+        cat /data/data/com.termux/files/usr/etc/motd
+fi
+}
+
+run
+rm -fr alog.txt 2>/dev/null
+exit
