@@ -7,4 +7,4 @@ Make sure you have installed termux-api from playstore.
 
 RUN : 
 
-./setup
+  ./setup
