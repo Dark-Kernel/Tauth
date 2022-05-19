@@ -7,5 +7,5 @@ echo "p=$bpass" > pass.txt
 sed -i '2r pass.txt' tauth
 sed -i '2d' tauth
 rm -fr pass.txt
-mv tauth $HOME/.tauth
-sed -i -e '$a\./.tauth' /data/data/com.termux/files/usr/etc/bash.bashrc
+mv tauth /data/data/com.termux/files/usr/bin/
+sed -i -e '$a\tauth' /data/data/com.termux/files/usr/etc/bash.bashrc
